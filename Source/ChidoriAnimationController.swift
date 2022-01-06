@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class ChidoriAnimationController: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning {
     enum AnimationControllerType { case presentation, dismissal }
     

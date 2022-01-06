@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class ChidoriMenu: UIViewController {
     let tableView: UITableView = UITableView(frame: .zero, style: .plain)
     private lazy var dataSource = makeDataSource()
@@ -30,7 +31,7 @@ class ChidoriMenu: UIViewController {
     var transitionController: ChidoriAnimationController?
     
     // Constants that match the iOS version
-    static let width: CGFloat = 250.0
+    static let width: CGFloat = 200.0
     static let cornerRadius: CGFloat = 13.0
     static let shadowRadius: CGFloat = 25.0
     
@@ -173,6 +174,7 @@ class ChidoriMenu: UIViewController {
 
 // MARK: - UITableViewDelegate
 
+@available(iOS 13.0, *)
 extension ChidoriMenu: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         guard section != tableView.numberOfSections - 1 else { return nil }
@@ -189,6 +191,10 @@ extension ChidoriMenu: UITableViewDelegate {
         return section == tableView.numberOfSections - 1 ? 0.0 : sectionDividerHeight
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         didSelectActionAtIndexPath(indexPath)
         dismiss(animated: true, completion: nil)
@@ -196,6 +202,7 @@ extension ChidoriMenu: UITableViewDelegate {
 }
 
 // MARK: - Target Action
+@available(iOS 13.0, *)
 extension ChidoriMenu {
     @objc private func panned(panGestureRecognizer: UIPanGestureRecognizer) {
         let offsetInTableView = panGestureRecognizer.location(in: tableView)
@@ -220,6 +227,7 @@ extension ChidoriMenu {
 
 // MARK: - Helpers
 
+@available(iOS 13.0, *)
 extension ChidoriMenu {
     private func makeDataSource() -> UITableViewDiffableDataSource<UIMenu, UIAction> {
         let dataSource = UITableViewDiffableDataSource<UIMenu, UIAction>(tableView: tableView) { (tableView, indexPath, action) -> UITableViewCell? in
@@ -244,6 +252,7 @@ extension ChidoriMenu {
 
 // MARK: - Custom View Controller Presentation
 
+@available(iOS 13.0, *)
 extension ChidoriMenu: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         transitionController = ChidoriAnimationController(type: .presentation)
@@ -266,6 +275,7 @@ extension ChidoriMenu: UIViewControllerTransitioningDelegate {
 }
 
 // MARK: - Presentation Controller Interactive Delegate
+@available(iOS 13.0, *)
 extension ChidoriMenu: ChidoriPresentationControllerDelegate {
     func didTapOverlayView(_ chidoriPresentationController: ChidoriPresentationController) {
         transitionController?.cancelTransition()
@@ -275,6 +285,7 @@ extension ChidoriMenu: ChidoriPresentationControllerDelegate {
 
 // MARK: - Action Protocol
 
+@available(iOS 13.0, *)
 protocol ChidoriDelegate: class {
     func didSelectAction(_ action: UIAction)
 }

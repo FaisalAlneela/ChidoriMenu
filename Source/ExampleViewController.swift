@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class ExampleViewController: UIViewController {
     var actionMappings: [UIAction.Identifier: UIActionHandler] = [:]
     
@@ -71,6 +72,7 @@ class ExampleViewController: UIViewController {
     }
 }
 
+@available(iOS 13.0, *)
 extension ExampleViewController: ChidoriDelegate {
     func didSelectAction(_ action: UIAction) {
         actionMappings[action.identifier]?(action)

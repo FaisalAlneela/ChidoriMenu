@@ -7,6 +7,7 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class ChidoriMenuTableViewCell: UITableViewCell {
     var menuTitle: String = "" {
         didSet {
@@ -56,7 +57,7 @@ class ChidoriMenuTableViewCell: UITableViewCell {
         contentView.addSubview(iconImageView)
         
         let horizontalPadding: CGFloat = 17.0
-        let verticalPadding: CGFloat = 12.0
+        let verticalPadding: CGFloat = 6.0
         let iconTrailingOffset: CGFloat = 27.0
         let titleToIconMinSpacing: CGFloat = -16.0
         

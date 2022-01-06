@@ -7,10 +7,12 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 protocol ChidoriPresentationControllerDelegate: NSObjectProtocol {
     func didTapOverlayView(_ chidoriPresentationController: ChidoriPresentationController)
 }
 
+@available(iOS 13.0, *)
 class ChidoriPresentationController: UIPresentationController {
     let darkOverlayView: UIView = UIView()
     let tapGestureRecognizer = UITapGestureRecognizer(target: nil, action: nil)
